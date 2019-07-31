@@ -68,6 +68,15 @@ export function initDiscovery(options) {
         },
       ],
     },
+    // https://github.com/discoveryjs/discovery/issues/11#issuecomment-465944144
+    'h2:"Tree"',
+    {
+      view: 'tree',
+      data: [{id: 1, a: {id: 3, val: 1}}, {id: 2, b: [{id: 4, val: 1}]}],
+      children: '$r: (a or b) + []; $r.[size() > 1]',
+      item: ['text:id', 'struct'],
+      expanded: 100,
+    },
   ]);
 
   discovery.view.define('raw', el => {
